@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- JPA Cabeçalho -->
+<persistence 
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+    http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1"
+	>
+	
+	<persistence-unit name="exemplo-jpa" transaction-type="RESOURCE_LOCAL">
+	
+	<properties>
+		
+		<property name="javax.persistence.jdbc.url"
+			value="jdbc:mysql://localhost/aulajpa?useSSL=false&amp;serverTimezone=UTC" />
+		
+		<!-- com.mysql.cj.jdbc.Driver -->
+		<property name="javax.persistence.jdbc.driver" 
+				  value="com.mysql.jdbc.Driver" />
+				  
+		<property name="javax.persistence.jdbc.user" 
+				  value="root" />
+				  
+		<property name="javax.persistence.jdbc.password" 
+				  value="root" />
+
+
+		<!-- Propriedade: hibernate.hbm2ddl.auto
+		
+		A propriedade abaixo cria o banco automaticamente
+		Sempre que a aplicação rodar novamente, caso hajam novas classes/atributos de domínio
+		os mesmos serão criados no banco automáticamente.
+		
+		Neste sentido, caso o banco de dados já exista, novos dados/registros criados no
+		código fonte serão sincronizados com o banco existente, sem sobreescrevê-lo ou apagá-lo.
+		
+		O atributo value, também poderia receber os status "create", nesse caso a cada compilação,
+		um banco de dados novo é criado/sobreescrito. -->
+		<property name="hibernate.hbm2ddl.auto" 
+				  value="update" />
+
+		<!-- Propriedade: hibernate.dialect
+		
+		Essa propriedade busca estabelecer um dialeto padrão para diferentes bancos dados relacionais.
+		Baseado em ANSI por exemplo. Contudo, nem sempre essa padronização funciona, sendo necessário
+		verificar qual dialeto é o compatível com seu banco de dados.
+		
+		No link abaixo é feito uma relação entre dialetos e bancos de dados:
+		https://docs.jboss.org/hibernate/orm/5.4/javadocs/org/hibernate/dialect/package-summary.html -->
+		<property name="hibernate.dialect" 
+				  value="org.hibernate.dialect.MySQL8Dialect" />
+		
+	</properties>
+	
+	</persistence-unit>
+</persistence>
